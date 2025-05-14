@@ -14,6 +14,9 @@ spec:
       containers:
       - name: mongo
         image: mongo
+        volumeMounts: 
+          - name: mongopv
+            mountPath: /data/whatever
         env:
           - name: MONGO_INITDB_ROOT_USERNAME
             valueFrom: 
@@ -28,3 +31,8 @@ spec:
 
         ports:
         - containerPort: 27017
+
+      volumes: 
+      - name: mongopv
+        persistentVolumeClaim: 
+          claimName: mypvc2
