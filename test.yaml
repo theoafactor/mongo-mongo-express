@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mongoexpressingress
+  labels:
+    name: mongoexpressingress
+  namespace: ingress-nginx
+spec:
+  rules:
+    - http:
+        paths:
+        - pathType: Exact
+          path: "/"
+          backend:
+            service:
+              name: mongo-express-service
+              port: 
+                number: 80
