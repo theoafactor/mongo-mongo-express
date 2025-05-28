@@ -6,11 +6,17 @@ metadata:
     name: mongoexpressingress
   namespace: ingress-nginx
   annotations: 
+    kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
+  tls: 
+    - hosts: 
+      - codifydaily.com
+      secretName: codifydaily.com-tls
   ingressClassName: nginx
   rules:
-        - http:
+        - host: codifydaily.com
+          http: 
             paths:
             - path: /
               pathType: Prefix
